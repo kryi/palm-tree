@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<package name="card" extends="struts-default" namespace="/mystruts">
+		<global-results>
+			<result name="view">/view.jsp</result>
+			<result name="viewRec">/viewRec.jsp</result>
+		</global-results>
+		<action name="UserLogin" class="action.UserLogin" method="execute">
+			<result name="success">/main.jsp</result>
+			<result name="defeat">/index.jsp</result>
+		</action>
+		<action name="UserRigister" class="action.UserRegister" method="execute">
+			<result name="success">/index.jsp</result>
+			<result name="defeat">/register.jsp</result>
+		</action>
+		<action name="FindAllCard" class="action.FindAllCard" method="execute"/>
+		<action name="AddCard" class="action.AddCard" method="execute">
+			<result name="add">/addCard.jsp</result>
+		</action>
+		<action name="FindCard" class="action.FindCard" method="execute"/>
+		<action name="DeleteCard" class="action.DeleteCard" method="execute">
+			<result type="chain" name="FindAllCard">FindAllCard</result>
+		</action>
+		<action name="DeleteRecCard" class="action.DeleteRecCard" method="execute">
+			<result type="chain" name="FindAllCard">FindAllCard</result>
+		</action>
+		<action name="UpdateCard" class="action.UpdateCard" method="execute">
+			<result name="updateCard">/updateCard.jsp</result>
+		</action>
+		<action name="UpdateFindCard" class="action.UpdateFindCard" method="execute">
+			<result name="updateCard">/updateCard.jsp</result>
+		</action>
+	</package>
+</struts>
